@@ -15,6 +15,7 @@ ufo_data = (copy[['datetime', 'state', 'country']]).dropna()
 filtered = ufo_data[ufo_data['country'] == 'us']
 filtered = filtered[filtered['state'] != 'dc']
 filtered = filtered[filtered['state'] != 'pr']
+filtered = filtered.drop_duplicates(subset=['datetime', 'state'])
 
 #I then sorted by date because I wanted to know across which years the dataset spanned.
 sorted = filtered.sort_values(by='datetime')
